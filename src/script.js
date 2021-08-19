@@ -134,11 +134,7 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
  * Animate
  */
 
-
-
-
-
-document.addEventListener('mousemove',onDocumentMouseMove)
+ document.addEventListener('mousemove',onDocumentMouseMove)
 let mouseX = 0;
 let mouseY = 0;
 
@@ -151,6 +147,7 @@ const windowY = window.innerHeight / 2;
 function onDocumentMouseMove(event) {
     mouseX = (event.clientX - windowX)
     mouseY = (event.clientY - windowY)
+    
 }
 const updateSphere =(event)=>{
     sphere.position.y =window.scrollY * .001
@@ -161,16 +158,16 @@ const clock = new THREE.Clock()
 
 const tick = () =>
 {
-    targetX + mouseX * .001
-    targetY + mouseY * .001
+    targetX = targetX + mouseX * .001
+    targetY = targetY + mouseY * .001
     const elapsedTime = clock.getElapsedTime()
 
     // Update objects
     sphere.rotation.y = .5 * elapsedTime
 
-    sphere.rotation.y += .5 * (targetX - sphere.rotation.y)
-    sphere.rotation.x += .5 * (targetY - sphere.rotation.x)
-    sphere.position.z += .5 * (targetY - sphere.rotation.x)
+    sphere.rotation.y += .0005 * (targetX - sphere.rotation.y)
+    sphere.rotation.x += .0005 * (targetY - sphere.rotation.x)
+    sphere.rotation.z += .0005 * (targetY - sphere.rotation.x)
 
 
 
